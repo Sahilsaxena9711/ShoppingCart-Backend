@@ -39,5 +39,28 @@ public class ProductDaoImpl implements ProductDao {
         return product;
     }
 
+    @Override
+    public Collection<Product> getProductByBrand(String brand){
+        final String sql = "SELECT * FROM product WHERE brand = ?";
+        List<Product> product = jdbcTemplate.query(sql, new ProductRowMapper(), brand);
+        return product;
+    }
 
+    @Override
+    public Collection<Product> getProductByType(String type){
+        final String sql = "SELECT * FROM product WHERE type = ?";
+        List<Product> product = jdbcTemplate.query(sql, new ProductRowMapper(), type);
+        return product;
+    }
+
+    @Override
+    public void insertProduct(Product product){
+        final String sql = "INSERT INTO product (name, type, brand, price) VALUES (?, ?, ?, ?)";
+        final String sqlGet = "INSERT INTO product (name, type, brand, price) VALUES (?, ?, ?, ?)";
+        final String name = product.getName();
+        final String type = product.getType();
+        final String brand = product.getBrand();
+        final int price = product.getPrice();
+        jdbcTemplate.update(sql, new Object[]{name, type, brand, price});
+    }
 }
