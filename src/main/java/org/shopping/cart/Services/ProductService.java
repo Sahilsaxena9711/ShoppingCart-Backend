@@ -18,4 +18,16 @@ public class ProductService {
     public Collection<Product> getAllProduct(){
         return productDao.getAllProduct();
     }
+
+    public Collection<Product> getProductByBrand(String brand) {
+        return productDao.getProductByBrand(brand);
+    }
+
+    public Collection<Product> getProductByType(String type) {
+        return productDao.getProductByType(type);
+    }
+
+    public void inserProduct(Product product) {
+        this.productDao.insertProduct(product);
+    }
 }
