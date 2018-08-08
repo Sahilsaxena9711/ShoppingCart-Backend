@@ -30,4 +30,8 @@ public class ProductService {
     public void inserProduct(Product product) {
         this.productDao.insertProduct(product);
     }
+
+    public Collection<Product> getProductByPrice(String high, String low) {
+        return productDao.getProductByPrice(high, low);
+    }
 }
