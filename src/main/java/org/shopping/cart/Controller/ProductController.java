@@ -34,5 +34,10 @@ public class ProductController {
         this.productService.inserProduct(product);
     }
 
+    @RequestMapping(value = ("/high/{high}/low/{low}"), method = RequestMethod.GET)
+    public Collection<Product> getProductByPrice(@PathVariable("high") String high, @PathVariable("low") String low) {
+        return productService.getProductByPrice(high, low);
+    }
+
 
 }

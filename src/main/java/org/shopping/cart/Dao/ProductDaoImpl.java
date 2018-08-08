@@ -63,4 +63,11 @@ public class ProductDaoImpl implements ProductDao {
         final int price = product.getPrice();
         jdbcTemplate.update(sql, new Object[]{name, type, brand, price});
     }
+
+    @Override
+    public Collection<Product> getProductByPrice(String high, String low){
+        final String sql = "SELECT * FROM product WHERE price BETWEEN ? and ?";
+        List<Product> product = jdbcTemplate.query(sql, new ProductRowMapper(), high, low);
+        return product;
+    }
 }

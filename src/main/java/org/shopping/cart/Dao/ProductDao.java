@@ -11,4 +11,6 @@ public interface ProductDao {
     public Collection<Product> getProductByType(String type);
 
     public void insertProduct(Product product);
+
+    public Collection<Product> getProductByPrice(String high, String low);
 }
